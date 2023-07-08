@@ -1,0 +1,47 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container" id="container">
+  <div class="form-container sign-up-container">
+    <form action="#">
+      <h1>Ajouter un compte</h1>
+
+
+      <input type="text" placeholder="Nom"  [(ngModel)]="profile.nom" name="nom" id="name"[class.is-invalid]="nom.invalid && nom.touched" required #nom="ngModel"/>
+      <input type="text" placeholder="Prenom"  [(ngModel)]="profile.prenom" name="nom" id="secondeName"[class.is-invalid]="prenom.invalid && prenom.touched" required #prenom="ngModel"/>
+      <input type="email" placeholder="Email"  [(ngModel)]="profile.email" name="nom" id="mail"[class.is-invalid]="email.invalid && email.touched" required #email="ngModel"/>
+      <input type="password" placeholder="Password"  [(ngModel)]="profile.newPassword" name="password" id="newPassword"[class.is-invalid]="newPassword.invalid && newPassword.touched" required #newPassword="ngModel"/>
+      <input type="number" placeholder="Numero telephone"  [(ngModel)]="profile.numTel" name="tel" id="numTel"[class.is-invalid]="numTel.invalid && numTel.touched" required #numTel="ngModel"/>
+      <button (click)="createUser()">Creer Compte</button>
+    </form>
+  </div>
+  <div class="form-container sign-in-container">
+    <form>
+      <h1>Connecter</h1>
+      <input type="email" placeholder="Email" id="test1" [(ngModel)]="loginTest" [ngModelOptions]="{ standalone: true }"/>
+      <input type="password" placeholder="Password" id="test2" [(ngModel)]="passwordTest" [ngModelOptions]="{ standalone: true }" />
+      <a  (click)="sendmail()">Mot de passe oublié?</a>
+      <button (click)="checkMail()">log in</button>
+    </form >
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Hello</h1>
+        <p>Veuillez saisir votre identifiant et votre mot de passe</p>
+        <button class="ghost" id="signIn">J'ai un compte</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Bonjour,</h1>
+        <p>Entrez vos données personnelles et commencez votre experience avec nous</p>
+        <button class="ghost" id="signUp">Creer un compte</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

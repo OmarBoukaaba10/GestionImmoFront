@@ -1,0 +1,39 @@
+
+<br>
+<br>
+<br><div class="container">
+<form #f="ngForm" [formGroup]="formUser">
+
+    <label for="email" >Email :</label>
+    <input type="text" [(ngModel)]="profil.email" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="email" formControlName="email" disabled>
+  <br>
+    <label for="password">Password:</label>
+    <input type="password" [(ngModel)]="profil.newPassword" placeholder="password" name="password" class="form-control" id="password" formControlName="newPassword">
+<br>
+
+    <label  for="inputGroupSelect01">Type :</label>
+    <select class="form-select" id="inputGroupSelect01" formControlName="type"[(ngModel)]="user.type">
+      <option value="0">Admin</option>
+      <option value="1">Simple</option>
+    </select>
+  <br>
+<br>
+
+    <label for="nom">Nom:</label>
+    <input type="text" [(ngModel)]="profil.nom" class="form-control" placeholder="nom" aria-label="nom" aria-describedby="basic-addon1" id="nom" formControlName="nom">
+  <br>
+
+
+    <label for="prenom">Prenom:</label>
+    <input type="text" [(ngModel)]="profil.prenom" class="form-control" placeholder="prenom" aria-label="prenom" aria-describedby="basic-addon1" id="prenom" formControlName="prenom">
+  <br>
+
+
+    <label for="numtel">numero telephone:</label>
+    <input type="text" [(ngModel)]="profil.numTel" class="form-control" placeholder="numtel" aria-label="numetel" aria-describedby="basic-addon1" id="numtel" formControlName="numTel">
+<br>
+<div class="input-group mb-3">
+  <button (click)="updateUser(f.value)" class="btn btn-outline-secondary" type="button" id="button-addon1">Update</button>
+</div>
+</form>
+</div>
