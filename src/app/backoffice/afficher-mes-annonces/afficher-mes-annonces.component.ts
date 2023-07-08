@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Pipe} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AnnonceService} from '../services/annonceService/annonce.service';
 
@@ -9,6 +9,7 @@ import {AnnonceService} from '../services/annonceService/annonce.service';
   styleUrls: ['./afficher-mes-annonces.component.scss']
 })
 export class AfficherMesAnnoncesComponent implements OnInit {
+  searchText;
 
   annonces!: any;
   constructor(private s: AnnonceService) { }
@@ -22,6 +23,9 @@ export class AfficherMesAnnoncesComponent implements OnInit {
       }
     );
   }
+
+
+
 
 
 }

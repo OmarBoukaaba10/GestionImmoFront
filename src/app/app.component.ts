@@ -1,3 +1,4 @@
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({/*
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   selector : 'body', template : '<router-outlet></router-outlet>',
 })
 export class AppComponent {
+  constructor(private httpClient: HttpClient) { }
   title = 'PiDevGestionImmo';
+
 }

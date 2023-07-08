@@ -26,9 +26,12 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
+
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
             ],
             "scripts": []
           },

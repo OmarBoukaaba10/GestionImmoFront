@@ -16,18 +16,30 @@ import {SupprimerbienImmobiliereComponent} from './backoffice/supprimerbien-immo
 import {AfficherPromotionComponent} from './backoffice/afficher-promotion/afficher-promotion.component';
 import {SupprimerPromotionComponent} from './backoffice/supprimer-promotion/supprimer-promotion.component';
 import {AjouterPromotionComponent} from './backoffice/ajouter-promotion/ajouter-promotion.component';
+import {CheckoutComponent} from './backoffice/checkout/checkout.component';
+import {SubscriptionComponent} from './backoffice/subscription/subscription.component';
+import {DetailAnnonceComponent} from './backoffice/detail-annonce/detail-annonce.component';
+import {CancelComponent} from './backoffice/cancel/cancel.component';
+import {SuccessComponent} from './backoffice/success/success.component';
+import {FrontAnnonceComponent} from './frontoffice/front-annonce/front-annonce.component';
+import {FrontAnnonceDetailsComponent} from './frontoffice/front-annonce-details/front-annonce-details.component';
 
 
 
 
 const routes: Routes = [
+  { path: 'cancel', component: CancelComponent },
+  { path: 'success', component: SuccessComponent },
+
   {
     path: 'admin', component: AllTemplateAdminComponent,
     children: [
       {
         path: 'home', component: BodyAdminComponent,
       },
-      {path: 'mesannonces', component: AfficherMesAnnoncesComponent },
+      {path: 'mesannonces', component: AfficherMesAnnoncesComponent, },
+      {path: 'detailAnnonce/:id',
+        component: DetailAnnonceComponent, },
       {path: 'ajouterannonce', component: AjouterAnnoncesComponent },
       {path: 'modifierannonce/:id', component: ModifierAnnoncesComponent },
       {path: 'supprimerannonce/:id', component: SupprimerAnnoncesComponent },
@@ -39,7 +51,27 @@ const routes: Routes = [
       {path: 'supprimerbienimmo/:id', component: SupprimerbienImmobiliereComponent },
 
       {path: 'mespromotions', component: AfficherPromotionComponent },
-      {path: 'ajouterpromotion', component: AjouterPromotionComponent },
+      {path: 'ajouterpromotion', component: AjouterPromotionComponent},
+      {
+        path: 'checkout',
+        component: CheckoutComponent,
+      },
+      {
+        path: 'subscription',
+        component: SubscriptionComponent,
+      },
+       /* children: [
+
+      {
+        path: 'checkout',
+        component: CheckoutComponent,
+      },
+      {
+        path: 'subscription',
+        component: SubscriptionComponent,
+      }
+        ]
+      },*/
       {path: 'supprimerpromotion/:id', component: SupprimerPromotionComponent }
     ]
   },
@@ -47,7 +79,11 @@ const routes: Routes = [
     path: '', component: AllTemplateUserComponent,
     children: [
       {
-        path: '', component: BodyUserComponent,
+        path: 'annonces', component: FrontAnnonceComponent,
+
+      },
+      {
+        path: 'detailAnnonce/:d', component: FrontAnnonceDetailsComponent,
       }
     ]
   }

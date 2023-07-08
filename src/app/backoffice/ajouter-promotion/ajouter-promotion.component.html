@@ -9,7 +9,7 @@
       Ajouter promorion
     </div>
     <div class="card-body">
-      <form>
+      <form #myForm="ngForm" (ngSubmit)="submitForm()">
         <!--<div class="form-group">
           <label>Name</label>
           <input [(ngModel)]="promorion.status" id="name" name="name" class="form-control" type="text">
@@ -17,12 +17,36 @@
 
         <div class="form-group">
           <label >DateDebut</label>
-          <input [(ngModel)]="promorion.dateDebut" id="description" name="description" class="form-control" type="text">
+          <input  id="DateDebut" name="DateDebut" class="form-control" type="date"
+                 required minlength="10" appForbiddenName="bob" [(ngModel)]="promorion.dateDebut" #DateDebut="ngModel">
+
+          <div *ngIf="DateDebut.invalid && (DateDebut.dirty || DateDebut.touched)"
+               class="alert">
+            <div *ngIf="DateDebut.errors?.required" style="color:red">
+              Date Debut is required.
+            </div>
+            <div *ngIf="DateDebut.errors?.minlength" style="color:red">
+              DateDebut must be in this form mm/dd/yyyy.
+            </div>
+
+          </div>
         </div>
 
         <div class="form-group">
           <label >DateFin</label>
-          <input [(ngModel)]="promorion.dateFin" name="image" id="image" class="form-control" type="text">
+          <input  name="image" id="image" class="form-control" type="date"
+        required minlength="10" appForbiddenName="bob" [(ngModel)]="promorion.dateFin" #dateFin="ngModel">
+
+          <div *ngIf="dateFin.invalid && (dateFin.dirty || dateFin.touched)"
+               class="alert">
+            <div *ngIf="dateFin.errors?.required" style="color:red">
+              dateFin is required.
+            </div>
+            <div *ngIf="dateFin.errors?.minlength" style="color:red">
+              dateFin must be in this form mm/dd/yyyy.
+            </div>
+
+          </div>
         </div>
 
 
@@ -35,8 +59,8 @@
 
         </div>
 
-
-        <button class="btn btn-primary" (click)="save()">Lancer demande</button>
+        <h3> You will pay $ ! </h3>
+        <button class="btn btn-primary" (click)="save()" [disabled]="!myForm.valid">Payer et Lancer demande </button>
       </form>
     </div>
   </div>

@@ -17,7 +17,7 @@ import { AjouterAnnoncesComponent } from './backoffice/ajouter-annonces/ajouter-
 import { ModifierAnnoncesComponent } from './backoffice/modifier-annonces/modifier-annonces.component';
 import { SupprimerAnnoncesComponent } from './backoffice/supprimer-annonces/supprimer-annonces.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AfficherbienImmobiliereComponent } from './backoffice/afficherbien-immobiliere/afficherbien-immobiliere.component';
 import { AjouterbienImmobiliereComponent } from './backoffice/ajouterbien-immobiliere/ajouterbien-immobiliere.component';
 import { SupprimerbienImmobiliereComponent } from './backoffice/supprimerbien-immobiliere/supprimerbien-immobiliere.component';
@@ -25,6 +25,15 @@ import { ModifierbienImmobiliereComponent } from './backoffice/modifierbien-immo
 import { AfficherPromotionComponent } from './backoffice/afficher-promotion/afficher-promotion.component';
 import { AjouterPromotionComponent } from './backoffice/ajouter-promotion/ajouter-promotion.component';
 import { SupprimerPromotionComponent } from './backoffice/supprimer-promotion/supprimer-promotion.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CheckoutComponent} from './backoffice/checkout/checkout.component';
+import {SubscriptionComponent} from './backoffice/subscription/subscription.component';
+import { DetailAnnonceComponent } from './backoffice/detail-annonce/detail-annonce.component';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {FrontAnnonceComponent} from './frontoffice/front-annonce/front-annonce.component';
+import { FrontAnnonceDetailsComponent } from './frontoffice/front-annonce-details/front-annonce-details.component';
+
+
 
 
 @NgModule({
@@ -49,14 +58,23 @@ import { SupprimerPromotionComponent } from './backoffice/supprimer-promotion/su
     ModifierbienImmobiliereComponent,
     AfficherPromotionComponent,
     AjouterPromotionComponent,
-    SupprimerPromotionComponent
+    SupprimerPromotionComponent,
+    CheckoutComponent,
+    SubscriptionComponent,
+    DetailAnnonceComponent,
+    FrontAnnonceComponent,
+    FrontAnnonceDetailsComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

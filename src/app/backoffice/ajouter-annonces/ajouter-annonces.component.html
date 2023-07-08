@@ -6,40 +6,105 @@
 
   <div class="card" style="width: 50%;margin: 5px auto;">
     <div class="card-header">
-      Edit Annonce
+      ADD Annonce
     </div>
     <div class="card-body">
-      <form>
+      <form #myForm="ngForm" (ngSubmit)="submitForm()">
         <div class="form-group">
           <label>Name</label>
-          <input [(ngModel)]="annonce.name" id="name" name="name" class="form-control" type="text">
+          <input type="text" id="name" name="name" class="form-control"
+              required minlength="4" appForbiddenName="bob" [(ngModel)]="annonce.name" #name="ngModel">
+
+         <div *ngIf="name.invalid && (name.dirty || name.touched)"
+               class="alert">
+             <div *ngIf="name.errors?.required" style="color:red">
+               Name is required.
+             </div>
+              <div *ngIf="name.errors?.minlength" style="color:red">
+               Name must be at least 4 characters long.
+             </div>
+             <div *ngIf="name.errors?.forbiddenName" style="color:red">
+               Name cannot be Bob.
+             </div>
+
+           </div>
         </div>
+
 
         <div class="form-group">
           <label >Description</label>
-          <input [(ngModel)]="annonce.description" id="description" name="description" class="form-control" type="text">
+          <input [(ngModel)]="annonce.description" id="description" name="description" class="form-control" type="text"   required minlength="4" appForbiddenName="bob" #description="ngModel">
+
+          <div *ngIf="description.invalid && (description.dirty || description.touched)"
+               class="alert">
+            <div *ngIf="description.errors?.required" style="color:red">
+              Description is required.
+            </div>
+            <div *ngIf="description.errors?.minlength" style="color:red">
+              Description must be at least 4 characters long.
+            </div>
+            <div *ngIf="description.errors?.forbiddenName" style="color:red">
+              Description cannot be Bob.
+            </div>
+
+          </div>
         </div>
 
-        <div class="form-group">
+
+       <!-- <div class="form-group">
           <label >image</label>
           <input [(ngModel)]="annonce.image" name="image" id="image" class="form-control" type="text">
-        </div>
+        </div>-->
+
+
 
         <div class="form-group">
-          <label >Select Bien-Immobiliere</label> <br>
+          <input type="file" (change)="onImageUpload($event)">
+          <input type="button" (click)="imageUploadAction()" value="Upload Image" class="btn btn-primary">
+        </div>
 
 
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Select Bien-Immobiliere</option>
-            <option value="{{a.idBienimmo}}" *ngFor="let a of bienimmos ">{{a.description}}</option>
+        <div>
+          <output *ngIf=successResponse class="success"><b>{{successResponse}}</b></output>
+        </div>
+        <br>
+
+        <div class="form-group">
+          <input type="text" id="image" placeholder="Search Image" [(ngModel)]="image" name="image" />
+          <input type="button" (click)="viewImage()" value="View Image" class="btn btn-primary">
+
+        </div>
+
+        <div *ngIf=dbImage>
+          <img [src]="dbImage">
+        </div>
+
+
+
+
+    <!--    <div class="form-group">
+          <label >Select Bien-Immobiliere </label> <br>
+          <select class="form-select" aria-label="Default select example"[ngModelOptions]="{standalone: true}" [(ngModel)]="selectedItem" (change)="onItemSelected()">
+            <option value="8" selected>Select Bien-Immobiliere</option>
+            <option  *ngFor="let a of bienimmos" [value]="a.idBienimmo">{{a.description}}</option>
+
+          </select>
+    </div>-->
+
+
+
+        <div class="form-group">
+          <label >Select Annonce</label> <br>
+          <select class="form-select" aria-label="Default select example" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedItem" (change)="onItemSelected()">
+            <option selected>Select Bienimmo</option>
+            <option [value]="a.idBienImmo" *ngFor="let a of bienimmos " >{{a.description}}</option>
           </select>
 
-    </div>
+        </div>
+        <button class="btn btn-primary" (click)="save()" [disabled]="!myForm.valid">Ajouter</button>
 
 
 
-
-        <button class="btn btn-primary" (click)="save()">Ajouter</button>
       </form>
     </div>
   </div>

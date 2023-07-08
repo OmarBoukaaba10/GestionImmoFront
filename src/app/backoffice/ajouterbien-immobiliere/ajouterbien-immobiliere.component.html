@@ -1,4 +1,4 @@
-<!--<br>
+<!-- <br>
 <br>
 <br>
 <br>
@@ -8,8 +8,8 @@
 <br>
 <br>
 <form #f="ngForm">
-  &lt;!&ndash;  <label > id </label>
-    <input type="number" name="id" ngModel ><br>&ndash;&gt;
+ <label > id </label>
+   <input type="number" name="id" ngModel ><br>
 
   <label > Statut</label>
   <input type="text" name="name" ngModel [(ngModel)]="bienimmo.statut"><br>
@@ -29,7 +29,7 @@
   <input type="submit" value="save" (click)="save()" >
 
 
-</form>-->
+</form>
 
 
 <div class="container-fluid">
@@ -39,38 +39,217 @@
       Edit Bien Immo
     </div>
     <div class="card-body">
-      <form>
+      <form #myForm="ngForm" (ngSubmit)="submitForm()">
         <div class="form-group">
-          <label>statut</label>
-          <input [(ngModel)]="bienimmo.statut" id="status" name="statut" class="form-control" type="text">
+          <label>Statut</label>
+          <input id="status" name="statut" class="form-control" type="text"
+                 required minlength="4" appForbiddenName="bob" [(ngModel)]="bienimmo.statut" #statut="ngModel">
+
+          <div *ngIf="statut.invalid && (statut.dirty || statut.touched)"
+               class="alert">
+            <div *ngIf="statut.errors?.required" style="color:red">
+              statut is required.
+            </div>
+            <div *ngIf="statut.errors?.minlength" style="color:red">
+              statut must be at least 4 characters long.
+            </div>
+
+          </div>
         </div>
 
         <div class="form-group">
           <label >Etat</label>
-          <input [(ngModel)]="bienimmo.etat" name="etat" id="etat" class="form-control" type="text">
+          <input [(ngModel)]="bienimmo.etat" name="etat" id="etat" class="form-control" type="text"
+                 required minlength="4" appForbiddenName="bob" #etat="ngModel">
+
+          <div *ngIf="etat.invalid && (etat.dirty || etat.touched)"
+               class="alert">
+            <div *ngIf="etat.errors?.required" style="color:red">
+              etat is required.
+            </div>
+            <div *ngIf="etat.errors?.minlength" style="color:red">
+              etat must be at least 4 characters long.
+            </div>
+
+          </div>
         </div>
-        <div class="form-group">
-          <label >Localisation</label>
+<div>
           <input [(ngModel)]="bienimmo.localisation" name="localisation" id="localisation" class="form-control" type="text">
         </div>
         <div class="form-group">
           <label >Description</label>
-          <input [(ngModel)]="bienimmo.description" name="description" id="description" class="form-control" type="text">
+          <input [(ngModel)]="bienimmo.description" name="description" id="description" class="form-control" type="text"
+                 required minlength="4" appForbiddenName="bob" #description="ngModel">
+
+          <div *ngIf="description.invalid && (description.dirty || description.touched)"
+               class="alert">
+            <div *ngIf="description.errors?.required" style="color:red">
+              description is required.
+            </div>
+            <div *ngIf="description.errors?.minlength" style="color:red">
+              description must be at least 4 characters long.
+            </div>
+
+          </div>
+
         </div>
         <div class="form-group">
           <label >Prix</label>
-          <input [(ngModel)]="bienimmo.prix" name="prix" id="prix" class="form-control" type="number">
+          <input [(ngModel)]="bienimmo.prix" name="prix" id="prix" class="form-control" type="number"
+                 required min="10" appForbiddenName="bob" #prix="ngModel">
+
+          <div *ngIf="prix.invalid && (prix.dirty || prix.touched)"
+               class="alert">
+            <div *ngIf="prix.errors?.required" style="color:red">
+              prix is required.
+            </div>
+            <div *ngIf="prix.errors?.minlength" style="color:red">
+              prix must be at least 10.
+            </div>
+        </div>
         </div>
         <div class="form-group">
           <label >Superficie</label>
-          <input [(ngModel)]="bienimmo.superficie" name="superficie" id="superficie" class="form-control" type="number">
-        </div>
+          <input [(ngModel)]="bienimmo.superficie" name="superficie" id="superficie" class="form-control" type="number"
+                 required min="10" appForbiddenName="bob" #superficie="ngModel">
 
-        <button class="btn btn-primary" (click)="save()">Ajouter</button>
+          <div *ngIf="superficie.invalid && (superficie.dirty || superficie.touched)"
+               class="alert">
+            <div *ngIf="superficie.errors?.required" style="color:red">
+              superficie is required.
+            </div>
+            <div *ngIf="superficie.errors?.minlength" style="color:red">
+              superficie must be at least 30.
+            </div>
+          </div>
+        </div>
+          <button class="btn btn-primary" (click)="save()" [disabled]="!myForm.valid">Ajouter</button>
       </form>
     </div>
 
   </div>
+</div>-->
+
+
+<br><br>
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+
+      <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-6">
+
+          <div class="map-container">
+
+            <div class="map-frame">
+              <div id="map"></div>
+            </div>
+            <br>
+            <label >Localisation &nbsp;&nbsp;
+            </label><button class="btn btn-primary" (click)="getPosition()">Get Position</button><br>
+          </div>
+
+        <div class="col-lg-7 col-md-7 col-sm-9">
+          <br>
+          <form #myForm="ngForm" (ngSubmit)="submitForm()">
+            <h1> ADD Bien IMMO</h1>
+            <div class="form-group">
+              <label>Statut</label>
+              <input id="status" name="statut" class="form-control" type="text"
+                     required minlength="4" appForbiddenName="bob" [(ngModel)]="bienimmo.statut" #statut="ngModel">
+
+              <div *ngIf="statut.invalid && (statut.dirty || statut.touched)"
+                   class="alert">
+                <div *ngIf="statut.errors?.required" style="color:red">
+                  statut is required.
+                </div>
+                <div *ngIf="statut.errors?.minlength" style="color:red">
+                  statut must be at least 4 characters long.
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label >Etat</label>
+              <input [(ngModel)]="bienimmo.etat" name="etat" id="etat" class="form-control" type="text"
+                     required minlength="4" appForbiddenName="bob" #etat="ngModel">
+
+              <div *ngIf="etat.invalid && (etat.dirty || etat.touched)"
+                   class="alert">
+                <div *ngIf="etat.errors?.required" style="color:red">
+                  etat is required.
+                </div>
+                <div *ngIf="etat.errors?.minlength" style="color:red">
+                  etat must be at least 4 characters long.
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+            <div>
+              <label >Localisation &nbsp;&nbsp;
+              </label>
+              <input [(ngModel)]="bienimmo.localisation" [placeholder]="this.position" [defaultValue]="this.position" name="localisation" id="localisation" class="form-control" type="text">
+            </div>
+            </div>
+
+
+
+            <div class="form-group">
+              <label >Description</label>
+              <input [(ngModel)]="bienimmo.description" size="32" name="description" id="description" class="form-control" type="text"
+                     required minlength="4" appForbiddenName="bob" #description="ngModel">
+
+              <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                   class="alert">
+                <div *ngIf="description.errors?.required" style="color:red">
+                  description is required.
+                </div>
+                <div *ngIf="description.errors?.minlength" style="color:red">
+                  description must be at least 4 characters long.
+                </div>
+
+              </div>
+
+            </div>
+            <div class="form-group">
+              <label >Prix</label>
+              <input [(ngModel)]="bienimmo.prix" name="prix" id="prix" class="form-control" type="number"
+                     required min="10" appForbiddenName="bob" #prix="ngModel">
+
+              <div *ngIf="prix.invalid && (prix.dirty || prix.touched)"
+                   class="alert">
+                <div *ngIf="prix.errors?.required" style="color:red">
+                  prix is required.
+                </div>
+                <div *ngIf="prix.errors?.minlength" style="color:red">
+                  prix must be at least 10.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label >Superficie</label>
+              <input [(ngModel)]="bienimmo.superficie" name="superficie" id="superficie" class="form-control" type="number"
+                     required min="10" appForbiddenName="bob" #superficie="ngModel">
+
+              <div *ngIf="superficie.invalid && (superficie.dirty || superficie.touched)"
+                   class="alert">
+                <div *ngIf="superficie.errors?.required" style="color:red">
+                  superficie is required.
+                </div>
+                <div *ngIf="superficie.errors?.minlength" style="color:red">
+                  superficie must be at least 30.
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary" (click)="save()" [disabled]="!myForm.valid">Ajouter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
+</div>

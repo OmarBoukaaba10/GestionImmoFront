@@ -9,9 +9,11 @@ import {BienimmoService} from '../services/bienimmoServices/bienimmo.service';
 export class AfficherbienImmobiliereComponent implements OnInit {
 
   bienimmos!: any;
+  map: any;
   constructor(private s: BienimmoService) { }
 
   ngOnInit(): void {
+
     this.s.getBienimmos().subscribe(
       (data) => {
         console.log(data);
@@ -20,5 +22,8 @@ export class AfficherbienImmobiliereComponent implements OnInit {
       }
     );
   }
+
+
+
 
 }

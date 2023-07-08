@@ -21,7 +21,7 @@ export class SupprimerbienImmobiliereComponent implements OnInit {
     this.service.deleteBienimmo(this.id).subscribe(
       () => {
         alert('deleted');
-        this.r.navigate(['admin/mesannonces']);
+        this.r.navigate(['admin/mesbienimmo']);
       },
       (error) => {
         alert('error');
