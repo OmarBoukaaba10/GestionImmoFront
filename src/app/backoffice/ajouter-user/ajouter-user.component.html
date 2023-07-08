@@ -1,0 +1,40 @@
+
+<br>
+<br>
+<br><div class="input-group mb-3">
+  <label for="email">Email :</label>
+  <input type="text" [(ngModel)]="profile.email" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="email" [class.is-invalid]="email.invalid && email.touched" required #email="ngModel">
+  <small [class.d-none]="email.valid || email.untouched" style="color:red;">votre champ est vide</small>
+</div>
+<div class="input-group mb-3">
+  <label for="password">Password:</label>
+  <input type="password" [(ngModel)]="profile.newPassword" placeholder="password" name="password" class="form-control" id="password" [class.is-invalid]="password.invalid && password.touched" required #password="ngModel">
+  <small [class.d-none]="password.valid || password.untouched" style="color:red;">votre champ est vide</small>
+</div>
+<div class="input-group mb-3">
+  <label class="input-group-text" for="inputGroupSelect01">Type</label>
+  <select class="form-select" id="inputGroupSelect01" [(ngModel)]="user.type">
+    <option selected>Choose...</option>
+    <option value="1">Admin</option>
+    <option value="2">user</option>
+  </select>
+</div>
+<div class="input-group mb-3">
+  <label for="nom">Nom:</label>
+  <input type="text" [(ngModel)]="profile.nom" class="form-control" placeholder="nom" aria-label="nom" aria-describedby="basic-addon1" id="nom" [class.is-invalid]="nom.invalid && nom.touched" required #nom="ngModel">
+  <small [class.d-none]="nom.valid || nom.untouched" style="color:red;">votre champ est vide</small>
+</div>
+<div class="input-group mb-3">
+  <label for="prenom">Prenom:</label>
+  <input type="text" [(ngModel)]="profile.prenom" class="form-control" placeholder="prenom" aria-label="prenom" aria-describedby="basic-addon1" id="prenom" [class.is-invalid]="prenom.invalid && prenom.touched" required #prenom="ngModel">
+  <small [class.d-none]="prenom.valid || prenom.untouched" style="color:red;">votre champ est vide</small>
+</div>
+<div class="input-group mb-3">
+  <label for="numtel">Username:</label>
+  <input type="text" [(ngModel)]="profile.numTel" class="form-control" placeholder="numtel" aria-label="numetel" aria-describedby="basic-addon1" id="numtel" [class.is-invalid]="numtel.invalid && numtel.touched" required #numtel="ngModel">
+  <small [class.d-none]="numtel.valid || numtel.untouched" style="color:red;">votre champ est vide</small>
+</div>
+
+<div class="input-group mb-3">
+  <button (click)="createUser()" class="btn btn-outline-secondary" type="button" id="button-addon1">Ajouter</button>
+</div>

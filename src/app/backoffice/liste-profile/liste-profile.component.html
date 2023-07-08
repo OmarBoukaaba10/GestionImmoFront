@@ -1,0 +1,33 @@
+<br>
+<br>
+<br>
+<br>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Email</th>
+    <th scope="col">Ancien Mot de passe</th>
+    <th scope="col">nouveau mot de passe</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Prenom</th>
+    <th scope="col">Numero telephone</th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container  *ngFor="let u of profile">
+  <tr *ngIf="u.archived">
+    <th scope="row">{{u.idProfil}}</th>
+    <td>{{u.email}}</td>
+    <td>{{u.ancienPassword}}</td>
+    <td>{{u.newPassword}}</td>
+    <td>{{u.nom}}</td>
+    <td>{{u.prenom}}</td>
+    <td>{{u.numTel}}</td>
+    <button [routerLink]="['./updateUser', u.idProfil]" class="btn btn-outline-secondary" type="button" id="button-addon1">Update</button>
+    <button  (click)="archiveUser(u.idProfil)" class="btn btn-outline-secondary" type="button" id="button-addon2">delete</button>
+
+  </tr>
+  </ng-container>
+  </tbody>
+</table>
